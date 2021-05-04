@@ -1,0 +1,34 @@
+.container {
+  display: grid;
+  grid-template-columns: 0.4fr 0.3fr 0.3fr;
+  /*   grid-template-rows: auto 25px auto 25px auto 25px auto 25px auto 25px auto; */
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+}
+
+.grid {
+  background-color: #444;
+  color: #fff;
+  padding: 25px;
+  font-size: 1rem;
+}
+
+.header {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+  background-color: #55d4eb;
+}
+
+.logo {
+  grid-column: 1 / 2;
+  grid-row-start: 2 / 3;
+  background-color: #d5c9e2;
+  min-height: 300px;
+}
+
+.content {
+  grid-column: 2 / 4;
+  grid-row: 2 / 4;
+  min-height: 500px;
+  background-color: #f5c531;
+}

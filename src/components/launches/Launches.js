@@ -3,6 +3,8 @@ import API from "./Api";
 import LaunchesList from "./LaunchesList";
 import { launchesReducer, initialState, actionTypes } from "./LaunchesReducer";
 import "./css/Launches.css";
+import logo from "./assets/spacex-logo.png";
+import launchHomeImage from "./assets/img/launch-home.png";
 
 const Launches = () => {
   const [state, dispatch] = useReducer(launchesReducer, {
@@ -32,7 +34,16 @@ const Launches = () => {
     <div className="container">
       <div className="grid header">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div>small logo</div>
+          <div style={{ display: "flex" }}>
+            <img
+              style={{ width: "180px", height: "20px" }}
+              src={logo}
+              alt="logo spacex"
+            ></img>
+            <span style={{ marginLeft: "-20px", padding: "2px" }}>
+              LAUNCHES
+            </span>
+          </div>
           <div>
             <input
               onClick={reloadData}
@@ -44,7 +55,13 @@ const Launches = () => {
           </div>
         </div>
       </div>
-      <div className="grid logo">Logo</div>
+      <div className="grid logo">
+        <img
+          style={{ width: "533px", height: "694px" }}
+          src={launchHomeImage}
+          alt="launch home"
+        ></img>
+      </div>
       <div className="grid content">
         {state.isFetchingLaunches ? (
           <div>Fetching...</div>

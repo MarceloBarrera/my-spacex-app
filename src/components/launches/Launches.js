@@ -77,10 +77,8 @@ const Launches = () => {
       </div>
       <div className="grid content">
         <div>
-          <button
-            onClick={() => {
-              filterByYear(2015);
-            }}
+          <select
+            onChange={(e) => filterByYear(e.target.value)}
             style={{
               backgroundColor: "#215184",
               color: "#FFFFFF",
@@ -88,9 +86,12 @@ const Launches = () => {
               width: "150px",
             }}
           >
-            <span>Filter by Year</span>
-            <Refresh />
-          </button>
+            {[2017, 2018, 2019, 2020].map((v) => (
+              <option value={v} key={v}>
+                {v}
+              </option>
+            ))}
+          </select>
 
           <button
             onClick={sort}

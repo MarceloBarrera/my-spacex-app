@@ -1,5 +1,6 @@
 export const initialState = {
   launchesList: [],
+  launchesListOriginal: [],
   isFetchingLaunches: false,
   errorOccurredWhenFetching: false,
   orderAsc: true,
@@ -17,7 +18,12 @@ export const launchesReducer = (state, action) => {
   console.log(action.payload);
   switch (action.type) {
     case actionTypes.SET_LAUNCHES_LIST:
-      return { ...state, launchesList: action.payload, orderAsc: true };
+      return {
+        ...state,
+        launchesList: action.payload,
+        launchesListOriginal: action.payload,
+        orderAsc: true,
+      };
     case actionTypes.SET_START_FETCHING_LAUNCHES:
       return { ...state, isFetchingLaunches: true };
     case actionTypes.SET_END_FETCHING_LAUNCHES:
@@ -25,7 +31,7 @@ export const launchesReducer = (state, action) => {
     case actionTypes.FILTER_LAUNCHES_LIST_BY_YEAR:
       return {
         ...state,
-        launchesList: state.launchesList.filter(
+        launchesList: state.launchesListOriginal.filter(
           (l) => l.launch_year === action.payload.toString()
         ),
       };

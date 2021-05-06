@@ -19,6 +19,20 @@ const Launches = () => {
     dispatch({ type: actionTypes.SET_END_FETCHING_LAUNCHES });
   }, []);
 
+  const filterByYear = (year) => {
+    console.log(year);
+    dispatch({
+      type: actionTypes.FILTER_LAUNCHES_LIST_BY_YEAR,
+      payload: year,
+    });
+  };
+
+  const sort = () => {
+    dispatch({
+      type: actionTypes.SORT_LAUNCHES_BY_FLIGHT_NUMBER,
+    });
+  };
+
   useEffect(() => {
     (async function () {
       loadData();
@@ -62,6 +76,35 @@ const Launches = () => {
         ></img>
       </div>
       <div className="grid content">
+        <div>
+          <button
+            onClick={() => {
+              filterByYear(2015);
+            }}
+            style={{
+              backgroundColor: "#215184",
+              color: "#FFFFFF",
+              verticalAlign: "baseline",
+              width: "150px",
+            }}
+          >
+            <span>Filter by Year</span>
+            <Refresh />
+          </button>
+
+          <button
+            onClick={sort}
+            style={{
+              backgroundColor: "#215184",
+              color: "#FFFFFF",
+              verticalAlign: "baseline",
+              width: "150px",
+            }}
+          >
+            <span>sort</span>
+            <Refresh />
+          </button>
+        </div>
         {state.isFetchingLaunches ? (
           <div>Fetching...</div>
         ) : (

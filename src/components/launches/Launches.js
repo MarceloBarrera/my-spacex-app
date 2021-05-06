@@ -3,38 +3,33 @@ import API from "./Api";
 import LaunchesList from "./LaunchesList";
 import { launchesReducer, initialState, actionTypes } from "./LaunchesReducer";
 import "./css/Launches.css";
-import logo from "./assets/spacex-logo.png";
-import launchHomeImage from "./assets/img/launch-home.png";
+import logo from "../../assets/spacex-logo.png";
+import launchHomeImage from "../../assets/img/launch-home.png";
+import Refresh from "./Refresh";
 
 const Launches = () => {
   const [state, dispatch] = useReducer(launchesReducer, {
     ...initialState,
   });
 
-  const reloadData = React.useCallback(async () => {
+  const loadData = React.useCallback(async () => {
+    dispatch({ type: actionTypes.SET_START_FETCHING_LAUNCHES });
     const launches = await API.getLaunches();
     dispatch({ type: actionTypes.SET_LAUNCHES_LIST, payload: launches });
-    console.log("click", launches.length);
+    dispatch({ type: actionTypes.SET_END_FETCHING_LAUNCHES });
   }, []);
 
   useEffect(() => {
     (async function () {
-      dispatch({ type: actionTypes.SET_START_FETCHING_LAUNCHES });
-
-      const launches = await API.getLaunches();
-      console.log(launches[0]);
-      dispatch({ type: actionTypes.SET_LAUNCHES_LIST, payload: launches });
-      dispatch({ type: actionTypes.SET_END_FETCHING_LAUNCHES });
-
-      console.log("use effecft", launches.length);
+      loadData();
     })();
-  }, []);
+  }, [loadData]);
 
   return (
     <div className="container">
       <div className="grid header">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ display: "flex" }}>
+          <div>
             <img
               style={{ width: "180px", height: "20px" }}
               src={logo}
@@ -44,15 +39,19 @@ const Launches = () => {
               LAUNCHES
             </span>
           </div>
-          <div>
-            <input
-              onClick={reloadData}
-              data-test-submit
-              type="submit"
-              className="btn btn-primary float-right"
-              value="Reload button"
-            />
-          </div>
+
+          <button
+            onClick={loadData}
+            style={{
+              backgroundColor: "#215184",
+              color: "#FFFFFF",
+              verticalAlign: "baseline",
+              width: "150px",
+            }}
+          >
+            <span>Reload Data</span>
+            <Refresh />
+          </button>
         </div>
       </div>
       <div className="grid logo">

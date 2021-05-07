@@ -1,0 +1,16 @@
+.launches-list {
+  margin-left: -30px;
+}
+
+.launches-list__item {
+  border: 4px solid;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.launches-list__flight span {
+  margin-left: 15px;
+}

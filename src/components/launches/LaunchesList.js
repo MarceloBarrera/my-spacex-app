@@ -1,21 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { formatDate } from "./Utils";
+import "./css/LaunchesList.css";
 
 const LaunchesList = ({ launches }) => {
   return (
-    <>
-      <ul>
-        {launches.map((item, index) => {
-          return (
-            <li key={index}>
-              #{item.flight_number}, {item.mission_name},{" "}
-              {formatDate(item.launch_date_local)}, {item.rocket.rocket_id}
-            </li>
-          );
-        })}
-      </ul>
-    </>
+    <ul className="launches-list">
+      {launches.map((item, index) => {
+        return (
+          <li key={index} className="launches-list__item">
+            <div className="launches-list__flight">
+              #{item.flight_number}
+              <span>{item.mission_name}</span>
+            </div>
+            <div>
+              <div>{formatDate(item.launch_date_local)}</div>
+              <div>{item.rocket.rocket_id}</div>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 

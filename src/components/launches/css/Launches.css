@@ -8,15 +8,14 @@
 }
 
 .grid {
-  background-color: #444;
-  color: #fff;
+  background-color: white;
+  color: black;
   padding: 25px;
 }
 
 .header {
   grid-column: 1 / 4;
   grid-row: 1 / 2;
-  background-color: #55d4eb;
 }
 
 .header__inner {
@@ -35,7 +34,6 @@
 .logo {
   grid-column: 1 / 1;
   grid-row-start: 2 / 3;
-  background-color: #d5c9e2;
   min-height: 300px;
 }
 
@@ -48,5 +46,6 @@
   grid-column: 2 / 4;
   grid-row: 2 / 4;
   min-height: 500px;
-  background-color: #f5c531;
+  background-color: white;
+  margin-left: -30px;
 }

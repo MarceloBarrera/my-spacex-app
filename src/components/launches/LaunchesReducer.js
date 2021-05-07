@@ -15,7 +15,6 @@ export const actionTypes = {
 };
 
 export const launchesReducer = (state, action) => {
-  console.log(action.payload);
   switch (action.type) {
     case actionTypes.SET_LAUNCHES_LIST:
       return {
@@ -31,6 +30,7 @@ export const launchesReducer = (state, action) => {
     case actionTypes.FILTER_LAUNCHES_LIST_BY_YEAR:
       return {
         ...state,
+        orderAsc: true,
         launchesList: state.launchesListOriginal.filter(
           (l) => l.launch_year === action.payload.toString()
         ),

@@ -19,11 +19,29 @@
   background-color: #55d4eb;
 }
 
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+}
+.header__logo img {
+  width: 180px;
+  height: 20px;
+}
+.header__logo span {
+  margin-left: -20px;
+  padding: 2px;
+}
+
 .logo {
   grid-column: 1 / 1;
   grid-row-start: 2 / 3;
   background-color: #d5c9e2;
   min-height: 300px;
+}
+
+.logo img {
+  width: 533px;
+  height: 694px;
 }
 
 .content {

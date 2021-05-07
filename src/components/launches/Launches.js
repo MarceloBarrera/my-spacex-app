@@ -20,7 +20,6 @@ const Launches = () => {
   }, []);
 
   const filterByYear = (year) => {
-    console.log(year);
     dispatch({
       type: actionTypes.FILTER_LAUNCHES_LIST_BY_YEAR,
       payload: year,
@@ -42,16 +41,10 @@ const Launches = () => {
   return (
     <div className="container">
       <div className="grid header">
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div>
-            <img
-              style={{ width: "180px", height: "20px" }}
-              src={logo}
-              alt="logo spacex"
-            ></img>
-            <span style={{ marginLeft: "-20px", padding: "2px" }}>
-              LAUNCHES
-            </span>
+        <div className="header__inner">
+          <div className="header__logo">
+            <img src={logo} alt="logo spacex"></img>
+            <span>LAUNCHES</span>
           </div>
 
           <button
@@ -69,11 +62,7 @@ const Launches = () => {
         </div>
       </div>
       <div className="grid logo">
-        <img
-          style={{ width: "533px", height: "694px" }}
-          src={launchHomeImage}
-          alt="launch home"
-        ></img>
+        <img src={launchHomeImage} alt="launch home"></img>
       </div>
       <div className="grid content">
         <div>

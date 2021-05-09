@@ -13,9 +13,13 @@ const LaunchesList = ({ launches }) => {
               #{item.flight_number}
               <span>{item.mission_name}</span>
             </div>
-            <div>
-              <div>{formatDate(item.launch_date_local)}</div>
-              <div>{item.rocket.rocket_id}</div>
+            <div className="launches-list__date-rocket">
+              <div className="launches-list__date">
+                {formatDate(item.launch_date_local)}
+              </div>
+              <div className="launches-list__rocket-id">
+                {item.rocket.rocket_id}
+              </div>
             </div>
           </li>
         );

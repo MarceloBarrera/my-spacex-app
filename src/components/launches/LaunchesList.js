@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { formatDate } from "./Utils";
 import "./css/LaunchesList.css";
 
-const LaunchesList = ({ launches }) => {
+const LaunchesList = ({ launches, errorOcurred }) => {
   return (
     <ul className="launches-list">
       {launches.map((item, index) => {
@@ -24,7 +24,9 @@ const LaunchesList = ({ launches }) => {
           </li>
         );
       })}
-      {launches.length === 0 ? "No flights on this year..." : ""}
+      {launches.length === 0 && !errorOcurred
+        ? "No flights on this year..."
+        : ""}
     </ul>
   );
 };

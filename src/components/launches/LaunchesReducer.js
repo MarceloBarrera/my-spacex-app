@@ -12,6 +12,7 @@ export const actionTypes = {
   SET_END_FETCHING_LAUNCHES: "SET_END_FETCHING_LAUNCHES",
   FILTER_LAUNCHES_LIST_BY_YEAR: "FILTER_LAUNCHES_LIST_BY_YEAR",
   SORT_LAUNCHES_BY_FLIGHT_NUMBER: "SORT_LAUNCHES_BY_FLIGHT_NUMBER",
+  FETCHING_LAUNCHES_FAILED: "FETCHING_LAUNCHES_FAILED",
 };
 
 export const launchesReducer = (state, action) => {
@@ -24,7 +25,11 @@ export const launchesReducer = (state, action) => {
         orderAsc: true,
       };
     case actionTypes.SET_START_FETCHING_LAUNCHES:
-      return { ...state, isFetchingLaunches: true };
+      return {
+        ...state,
+        isFetchingLaunches: true,
+        errorOccurredWhenFetching: false,
+      };
     case actionTypes.SET_END_FETCHING_LAUNCHES:
       return { ...state, isFetchingLaunches: false };
     case actionTypes.FILTER_LAUNCHES_LIST_BY_YEAR:
@@ -48,6 +53,12 @@ export const launchesReducer = (state, action) => {
           ? launchesOrdered.reverse()
           : launchesOrdered,
         orderAsc: !state.orderAsc,
+      };
+    case actionTypes.FETCHING_LAUNCHES_FAILED:
+      return {
+        ...state,
+        isFetchingLaunches: false,
+        errorOccurredWhenFetching: true,
       };
 
     default:

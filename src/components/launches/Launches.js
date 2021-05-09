@@ -17,10 +17,14 @@ const Launches = () => {
   });
 
   const loadData = React.useCallback(async () => {
-    dispatch({ type: actionTypes.SET_START_FETCHING_LAUNCHES });
-    const launches = await API.getLaunches();
-    dispatch({ type: actionTypes.SET_LAUNCHES_LIST, payload: launches });
-    dispatch({ type: actionTypes.SET_END_FETCHING_LAUNCHES });
+    try {
+      dispatch({ type: actionTypes.SET_START_FETCHING_LAUNCHES });
+      const launches = await API.getLaunches();
+      dispatch({ type: actionTypes.SET_LAUNCHES_LIST, payload: launches });
+      dispatch({ type: actionTypes.SET_END_FETCHING_LAUNCHES });
+    } catch {
+      dispatch({ type: actionTypes.FETCHING_LAUNCHES_FAILED });
+    }
   }, []);
 
   const filterByYear = (year) => {
@@ -72,7 +76,17 @@ const Launches = () => {
         {state.isFetchingLaunches ? (
           <div>Fetching...</div>
         ) : (
-          <LaunchesList launches={state.launchesList}></LaunchesList>
+          <LaunchesList
+            launches={state.launchesList}
+            errorOcurred={state.errorOccurredWhenFetching}
+          ></LaunchesList>
+        )}
+        {state.errorOccurredWhenFetching ? (
+          <div>
+            Error occurred when Fetching launches, please try again later...
+          </div>
+        ) : (
+          ""
         )}
       </div>
     </div>

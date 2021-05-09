@@ -32,7 +32,9 @@ export const launchesReducer = (state, action) => {
         ...state,
         orderAsc: true,
         launchesList: state.launchesListOriginal.filter(
-          (l) => l.launch_year === action.payload.toString()
+          (l) =>
+            l.launch_year === action.payload.toString() ||
+            action.payload.toString() === "ALL"
         ),
       };
     case actionTypes.SORT_LAUNCHES_BY_FLIGHT_NUMBER:

@@ -24,6 +24,7 @@ const LaunchesList = ({ launches }) => {
           </li>
         );
       })}
+      {launches.length === 0 ? "No flights on this year..." : ""}
     </ul>
   );
 };

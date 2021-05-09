@@ -1,12 +1,15 @@
 import React, { useEffect, useReducer } from "react";
 import API from "./Api";
+
 import LaunchesList from "./LaunchesList";
-import { launchesReducer, initialState, actionTypes } from "./LaunchesReducer";
-import "./css/Launches.css";
-import logo from "../../assets/spacex-logo.png";
-import launchHomeImage from "../../assets/img/launch-home.png";
+import DropdownYears from "../dropdownYears/DropdownYears";
 import Button from "../buttons/Button";
 import * as Icons from "./Icons";
+
+import { launchesReducer, initialState, actionTypes } from "./LaunchesReducer";
+import logo from "../../assets/spacex-logo.png";
+import launchHomeImage from "../../assets/img/launch-home.png";
+import "./css/Launches.css";
 
 const Launches = () => {
   const [state, dispatch] = useReducer(launchesReducer, {
@@ -21,6 +24,8 @@ const Launches = () => {
   }, []);
 
   const filterByYear = (year) => {
+    const result = parseInt(year);
+    if (!result) year = "ALL"; // this means return ALL launches.
     dispatch({
       type: actionTypes.FILTER_LAUNCHES_LIST_BY_YEAR,
       payload: year,
@@ -58,22 +63,7 @@ const Launches = () => {
       </div>
       <div className="grid content">
         <div className="list-buttons">
-          <select
-            onChange={(e) => filterByYear(e.target.value)}
-            style={{
-              backgroundColor: "#215184",
-              color: "#FFFFFF",
-              verticalAlign: "baseline",
-              width: "150px",
-            }}
-          >
-            {[2017, 2018, 2019, 2020].map((v) => (
-              <option value={v} key={v}>
-                {v}
-              </option>
-            ))}
-          </select>
-
+          <DropdownYears filterByYear={filterByYear}></DropdownYears>
           <Button onClick={sort}>
             Sort {state.orderAsc ? "Descending" : "Ascending"}
             <Icons.Sort />

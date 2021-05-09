@@ -2,11 +2,13 @@
   background-color: #215184;
   color: #ffffff;
   vertical-align: baseline;
-  font-family: Brandon Grotesque Regular;
+  font-family: "Brandon Grotesque Bold";
   padding: 0 10px 0 10px;
 }
 
 .button img {
   margin-left: 5px;
   margin-top: 4px;
+  width: 13px;
+  height: 13px;
 }

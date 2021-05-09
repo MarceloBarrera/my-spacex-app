@@ -21,6 +21,7 @@
 .header__inner {
   display: flex;
   justify-content: space-between;
+  margin-right: -50px;
 }
 .header__logo img {
   width: 180px;
@@ -33,6 +34,12 @@
 
 .header__refresh-button {
   border-radius: 15px 0 0 15px;
+}
+
+.list-buttons {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .logo {

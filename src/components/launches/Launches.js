@@ -57,7 +57,7 @@ const Launches = () => {
         <img src={launchHomeImage} alt="launch home"></img>
       </div>
       <div className="grid content">
-        <div>
+        <div className="list-buttons">
           <select
             onChange={(e) => filterByYear(e.target.value)}
             style={{

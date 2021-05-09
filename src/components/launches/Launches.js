@@ -5,7 +5,8 @@ import { launchesReducer, initialState, actionTypes } from "./LaunchesReducer";
 import "./css/Launches.css";
 import logo from "../../assets/spacex-logo.png";
 import launchHomeImage from "../../assets/img/launch-home.png";
-import Refresh from "./Refresh";
+import Button from "../buttons/Button";
+import * as Icons from "./Icons";
 
 const Launches = () => {
   const [state, dispatch] = useReducer(launchesReducer, {
@@ -46,19 +47,10 @@ const Launches = () => {
             <img src={logo} alt="logo spacex"></img>
             <span>LAUNCHES</span>
           </div>
-
-          <button
-            onClick={loadData}
-            style={{
-              backgroundColor: "#215184",
-              color: "#FFFFFF",
-              verticalAlign: "baseline",
-              width: "150px",
-            }}
-          >
-            <span>Reload Data</span>
-            <Refresh />
-          </button>
+          <Button className="header__refresh-button" onClick={loadData}>
+            Reload Data
+            <Icons.Refresh />
+          </Button>
         </div>
       </div>
       <div className="grid logo">
@@ -82,18 +74,10 @@ const Launches = () => {
             ))}
           </select>
 
-          <button
-            onClick={sort}
-            style={{
-              backgroundColor: "#215184",
-              color: "#FFFFFF",
-              verticalAlign: "baseline",
-              width: "150px",
-            }}
-          >
-            <span>sort</span>
-            <Refresh />
-          </button>
+          <Button onClick={sort}>
+            Sort {state.orderAsc ? "Descending" : "Ascending"}
+            <Icons.Sort />
+          </Button>
         </div>
         {state.isFetchingLaunches ? (
           <div>Fetching...</div>

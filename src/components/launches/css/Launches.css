@@ -31,6 +31,10 @@
   padding: 2px;
 }
 
+.header__refresh-button {
+  border-radius: 15px 0 0 15px;
+}
+
 .logo {
   grid-column: 1 / 1;
   grid-row-start: 2 / 3;

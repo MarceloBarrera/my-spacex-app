@@ -1,0 +1,12 @@
+.button {
+  background-color: #215184;
+  color: #ffffff;
+  vertical-align: baseline;
+  font-family: Brandon Grotesque Regular;
+  padding: 0 10px 0 10px;
+}
+
+.button img {
+  margin-left: 5px;
+  margin-top: 4px;
+}

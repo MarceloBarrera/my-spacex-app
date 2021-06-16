@@ -1,4 +1,3 @@
-import React from "react";
 import refresh from "../../assets/icon/refresh.png";
 import sort from "../../assets/icon/sort.png";
 

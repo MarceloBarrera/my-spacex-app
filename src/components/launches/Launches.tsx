@@ -6,7 +6,7 @@ import DropdownYears from "../dropdownYears/DropdownYears";
 import Button from "../buttons/Button";
 import * as Icons from "./Icons";
 
-import { launchesReducer, initialState, actionTypes } from "./LaunchesReducer";
+import { launchesReducer, initialState, ActionTypes } from "./LaunchesReducer";
 import logo from "../../assets/spacex-logo.png";
 import launchHomeImage from "../../assets/img/launch-home.png";
 import "./css/Launches.css";
@@ -18,27 +18,27 @@ const Launches = () => {
 
   const loadData = React.useCallback(async () => {
     try {
-      dispatch({ type: actionTypes.SET_START_FETCHING_LAUNCHES });
+      dispatch({ type: ActionTypes.SET_START_FETCHING_LAUNCHES });
       const launches = await API.getLaunches();
-      dispatch({ type: actionTypes.SET_LAUNCHES_LIST, payload: launches });
-      dispatch({ type: actionTypes.SET_END_FETCHING_LAUNCHES });
+      dispatch({ type: ActionTypes.SET_LAUNCHES_LIST, payload: launches });
+      dispatch({ type: ActionTypes.SET_END_FETCHING_LAUNCHES });
     } catch {
-      dispatch({ type: actionTypes.FETCHING_LAUNCHES_FAILED });
+      dispatch({ type: ActionTypes.FETCHING_LAUNCHES_FAILED });
     }
   }, []);
 
-  const filterByYear = (year) => {
+  const filterByYear = (year: string) => {
     const result = parseInt(year);
     if (!result) year = "ALL"; // this means return ALL launches.
     dispatch({
-      type: actionTypes.FILTER_LAUNCHES_LIST_BY_YEAR,
+      type: ActionTypes.FILTER_LAUNCHES_LIST_BY_YEAR,
       payload: year,
     });
   };
 
   const sort = () => {
     dispatch({
-      type: actionTypes.SORT_LAUNCHES_BY_FLIGHT_NUMBER,
+      type: ActionTypes.SORT_LAUNCHES_BY_FLIGHT_NUMBER,
     });
   };
 

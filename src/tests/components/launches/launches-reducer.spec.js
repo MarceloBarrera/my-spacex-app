@@ -1,11 +1,11 @@
 import {
   launchesReducer,
   initialState,
-  actionTypes,
-} from "../../../components/launches/LaunchesReducer.js";
+  ActionTypes,
+} from "../../../components/launches/LaunchesReducer";
 
 it("should fetching launches started", () => {
-  const action = { type: actionTypes.SET_START_FETCHING_LAUNCHES };
+  const action = { type: ActionTypes.SET_START_FETCHING_LAUNCHES };
 
   const newState = launchesReducer(initialState, action);
 
@@ -15,7 +15,7 @@ it("should fetching launches started", () => {
 
 it("should set launches list when set", () => {
   const action = {
-    type: actionTypes.SET_LAUNCHES_LIST,
+    type: ActionTypes.SET_LAUNCHES_LIST,
     payload: [{ flight_number: 1 }],
   };
 
@@ -27,7 +27,7 @@ it("should set launches list when set", () => {
 
 it("should fetched list when fetching ended", () => {
   const action = {
-    type: actionTypes.SET_END_FETCHING_LAUNCHES,
+    type: ActionTypes.SET_END_FETCHING_LAUNCHES,
     payload: [{ flight_number: 1 }],
   };
 
@@ -38,7 +38,7 @@ it("should fetched list when fetching ended", () => {
 
 it("should filter list by year", () => {
   const action = {
-    type: actionTypes.FILTER_LAUNCHES_LIST_BY_YEAR,
+    type: ActionTypes.FILTER_LAUNCHES_LIST_BY_YEAR,
     payload: 2020,
   };
 
@@ -55,7 +55,7 @@ it("should filter list by year", () => {
 
 it("should sort list by flight number and descending", () => {
   const action = {
-    type: actionTypes.SORT_LAUNCHES_BY_FLIGHT_NUMBER,
+    type: ActionTypes.SORT_LAUNCHES_BY_FLIGHT_NUMBER,
     payload: 2020,
   };
 
@@ -73,7 +73,7 @@ it("should sort list by flight number and descending", () => {
 
 it("should sort list by flight number and ascending", () => {
   const action = {
-    type: actionTypes.SORT_LAUNCHES_BY_FLIGHT_NUMBER,
+    type: ActionTypes.SORT_LAUNCHES_BY_FLIGHT_NUMBER,
     payload: 2020,
   };
 

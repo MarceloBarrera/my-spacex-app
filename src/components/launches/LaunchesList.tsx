@@ -1,9 +1,15 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { formatDate } from "./Utils";
 import "./css/LaunchesList.css";
+import { LaunchItem } from "./LaunchesReducer";
 
-const LaunchesList = ({ launches, errorOcurred }) => {
+const LaunchesList = ({
+  launches,
+  errorOcurred,
+}: {
+  launches: Array<LaunchItem>;
+  errorOcurred: boolean;
+}) => {
   return (
     <ul className="launches-list">
       {launches.map((item, index) => {
